@@ -43,7 +43,8 @@ class NomineeController extends Controller
             'linkedin' => 'required',
             'twitter' => 'required',
             'email' =>'required',
-            'instagram' => 'required'
+            'instagram' => 'required',
+            'experience' => 'required'
         ]);
 
         $nomination = new Nominee();
@@ -55,6 +56,7 @@ class NomineeController extends Controller
         $nomination->twitter = $request->twitter;
         $nomination->instagram = $request->instagram;
         $nomination->email = $request->email;
+        $nomination ->experience = $request->experience;
         $nomination->save();
 
         return response()->json([
