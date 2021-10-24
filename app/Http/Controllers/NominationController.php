@@ -51,23 +51,25 @@ class NominationController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'fullname' => 'required',
-            'linkedin' => 'required',
-            'email' => 'required',
-            'category' => 'required',
-        ]);
+        // $this->validate($request, [
+        //     'category' => 'required',
+        //     'gender' => 'required'
+        // ]);
 
-        $category = Category::where('name',$request->category)->first();
-
+        $category = DB::table('sub_categories')->where('name',$request->category)->first();
+        
         $category_id = $category->id;
+        
 
         $nomination = new Nomination();
-        $nomination->fullname = $request->fullname;
+        $nomination->firstname = $request->firstname;
+        $nomination->lastname = $request->lastname;
         $nomination->linkedin = $request->linkedin;
-        $nomination->email = $request->email;
-        $nomination->category_id = $category_id;
+        $nomination->sub_category_id = $category_id;
         $nomination->twitter = $request->twitter;
+        $nomination->gender = $request->gender;
+        $nomination->instagram = $request->instagram;
+        $nomination->facebook = $request->facebook;
         $nomination->save();
 
         return response()->json($nomination,201);
