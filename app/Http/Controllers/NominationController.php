@@ -59,7 +59,7 @@ class NominationController extends Controller
         $category = DB::table('sub_categories')->where('name',$request->category)->first();
         
         $category_id = $category->id;
-        
+        dd($category_id);
 
         $nomination = new Nomination();
         $nomination->firstname = $request->firstname;
