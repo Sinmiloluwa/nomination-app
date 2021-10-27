@@ -35,28 +35,36 @@ class NomineeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'phone_number' => 'required|min:11|max:11',
-            'alt' => 'min:11|max:11',
-            'linkedin' => 'required',
-            'twitter' => 'required',
-            'email' =>'required',
-            'instagram' => 'required',
-            'experience' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'firstname' => 'required',
+        //     'lastname' => 'required',
+        //     'phone_number' => 'required|min:11|max:11',
+        //     'alt' => 'min:11|max:11',
+        //     'linkedin' => 'required',
+        //     'twitter' => 'required',
+        //     'email' =>'required',
+        //     'instagram' => 'required',
+        //     'experience' => 'required'
+        // ]);
+
+        if ($request->has('companyName')) {
+            $category_id = 1;
+        } else {
+            $category_id = 2;
+        }
 
         $nomination = new Nominee();
-        $nomination->firstname = $request->firstname;
-        $nomination->lastname = $request->lastname;
-        $nomination->phone_number = $request->phone_number;
-        $nomination->alt_phone = $request->alt;
+        // $nomination->firstname = $request->firstname;
+        // $nomination->lastname = $request->lastname;
+        // $nomination->phone_number = $request->phone_number;
+        // $nomination->alt_phone = $request->alt;
         $nomination->linkedin = $request->linkedin;
         $nomination->twitter = $request->twitter;
         $nomination->instagram = $request->instagram;
         $nomination->email = $request->email;
         $nomination ->experience = $request->experience;
+        $nomination->category_id = $category_id;
+        $nomination->company_name = $request->companyName;
         $nomination->save();
 
         return response()->json([

@@ -59,13 +59,15 @@ class NominationController extends Controller
         $category = DB::table('sub_categories')->where('name',$request->category)->first();
         
         $category_id = $category->id;
-        dd($category_id);
+        
+        $location_id = DB::table('location')->where('name',$request->location)->value('id');
 
         $nomination = new Nomination();
-        $nomination->firstname = $request->firstname;
-        $nomination->lastname = $request->lastname;
+        $nomination->firstname = $request->firstName;
+        $nomination->lastname = $request->lastName;
         $nomination->linkedin = $request->linkedin;
         $nomination->sub_category_id = $category_id;
+        $nomination->location_id = $location_id;
         $nomination->twitter = $request->twitter;
         $nomination->gender = $request->gender;
         $nomination->instagram = $request->instagram;

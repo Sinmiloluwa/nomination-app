@@ -15,11 +15,11 @@ class CreateNomineesTable extends Migration
     {
         Schema::create('nominees', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('phone_number');
-            $table->string('email');
-            $table->string('alt_phone');
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('email')->nullable();
+            $table->string('alt_phone')->nullable();
             $table->string('linkedin');
             $table->string('instagram');
             $table->string('twitter');
