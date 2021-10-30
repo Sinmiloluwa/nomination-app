@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nomination;
 use App\Models\Nominee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NomineeController extends Controller
 {
@@ -47,23 +49,20 @@ class NomineeController extends Controller
         //     'experience' => 'required'
         // ]);
 
-        if ($request->has('companyName')) {
-            $category_id = 1;
-        } else {
-            $category_id = 2;
-        }
+        $category = DB::table('sub_categories')->where('name',$request->category)->first();
+        
+        $sub_category_id = $category->id;
+
+        $category_id = 2;
 
         $nomination = new Nominee();
-        // $nomination->firstname = $request->firstname;
-        // $nomination->lastname = $request->lastname;
-        // $nomination->phone_number = $request->phone_number;
-        // $nomination->alt_phone = $request->alt;
         $nomination->linkedin = $request->linkedin;
         $nomination->twitter = $request->twitter;
-        $nomination->instagram = $request->instagram;
-        $nomination->email = $request->email;
-        $nomination ->experience = $request->experience;
+        $nomination->facebook = $request->facebook;
+        $nomination->sub_category_id = $sub_category_id;
         $nomination->category_id = $category_id;
+        $nomination->instagram = $request->instagram;
+        $nomination->website = $request->website;
         $nomination->company_name = $request->companyName;
         $nomination->save();
 
@@ -73,6 +72,35 @@ class NomineeController extends Controller
         ], 200);
 
         
+    }
+
+    public function acceptIndividual(Request $request) 
+    {
+        $category = DB::table('sub_categories')->where('name',$request->category)->first();
+        
+        $sub_category_id = $category->id;
+
+        $category_id = 1;
+
+        $nomination =new Nominee;
+        $nomination->firstname = $request->firstName;
+        $nomination->lastname = $request->lastName;
+        $nomination->phone_number = $request->phone_number;
+        $nomination->linkedin = $request->linkedin;
+        $nomination->twitter = $request->twitter;
+        $nomination->category_id = $category_id;
+        $request->location_id = $request->location;
+        $nomination->facebook = $request->facebook;
+        $nomination->sub_category_id = $sub_category_id;
+        $nomination->experience = $request->yoe;
+        $nomination->gender = $request->genders;
+        $nomination->instagram = $request->instagram;
+        $nomination->email = $request->email;
+
+        return response()->json([
+            'status' => 'Nomination Accepted',
+            'data' => $nomination
+        ], 200);
     }
 
     /**

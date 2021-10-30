@@ -60,22 +60,39 @@ class NominationController extends Controller
         
         $category_id = $category->id;
         
-        $location_id = DB::table('location')->where('name',$request->location)->value('id');
+        // $location_id = DB::table('location')->where('name',$request->location)->value('id');
 
         $nomination = new Nomination();
-        $nomination->firstname = $request->firstName;
-        $nomination->lastname = $request->lastName;
         $nomination->linkedin = $request->linkedin;
         $nomination->sub_category_id = $category_id;
-        $nomination->location_id = $location_id;
         $nomination->twitter = $request->twitter;
-        $nomination->gender = $request->gender;
+        $nomination->company_name = $request->companyName;
+        $nomination->website = $request->website;
         $nomination->instagram = $request->instagram;
         $nomination->facebook = $request->facebook;
         $nomination->save();
 
         return response()->json($nomination,201);
 
+     }
+
+     public function storeIndividual(Request $request) {
+        $category = DB::table('sub_categories')->where('name',$request->category)->first();
+        
+        $category_id = $category->id;
+
+        $nomination = new Nomination();
+        $nomination->firstname = $request->firstName;
+        $nomination->lastname = $request->lastName;
+        $nomination->linkedin = $request->linkedin;
+        $nomination->sub_category_id = $category_id;
+        $nomination->twitter = $request->twitter;
+        $nomination->gender = $request->genders;
+        $nomination->instagram = $request->instagram;
+        $nomination->facebook = $request->facebook;
+        $nomination->save();
+
+        return response()->json($nomination,201);
      }
 
     /**

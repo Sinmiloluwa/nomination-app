@@ -15,13 +15,17 @@ class CreateNominationsTable extends Migration
     {
         Schema::create('nominations', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('lastname');
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
             $table->string('phone')->nullable();
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
-            $table->string('gender');
             $table->string('linkedin');
+            $table->string('experience')->nullable();
+            $table->string('email')->nullable();
+            $table->string('website')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('gender')->nullable();
             $table->unsignedBigInteger('sub_category_id');
             $table->timestamps();
 

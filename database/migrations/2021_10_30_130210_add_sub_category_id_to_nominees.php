@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddLocationIdToNominationsTable extends Migration
+class AddSubCategoryIdToNominees extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddLocationIdToNominationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('nominations', function (Blueprint $table) {
-            $table->unsignedBigInteger('location_id')->nullable();
-            $table->foreign('location_id')->references('id')->on('location')->onDelete('cascade');
+        Schema::table('nominees', function (Blueprint $table) {
+            $table->unsignedBigInteger('sub_category_id');
+            $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
         });
     }
 
@@ -26,7 +26,7 @@ class AddLocationIdToNominationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('nominations', function (Blueprint $table) {
+        Schema::table('nominees', function (Blueprint $table) {
             //
         });
     }
