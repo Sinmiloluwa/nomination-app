@@ -14,7 +14,7 @@ class AddTwitterColumnToNominationsTable extends Migration
     public function up()
     {
         Schema::table('nominations', function (Blueprint $table) {
-            $table->string('twitter');
+            $table->string('twitter')->nullable();
         });
     }
 

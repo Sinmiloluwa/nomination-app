@@ -20,7 +20,7 @@ class CreateNominationsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
-            $table->string('linkedin');
+            $table->string('linkedin')->nullable();
             $table->string('experience')->nullable();
             $table->string('email')->nullable();
             $table->string('website')->nullable();

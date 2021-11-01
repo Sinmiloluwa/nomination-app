@@ -19,10 +19,10 @@ class CreateNomineesTable extends Migration
             $table->string('lastname')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
-            $table->string('linkedin');
+            $table->string('linkedin')->nullable();
             $table->string('gender')->nullable();
-            $table->string('instagram')->n;
-            $table->string('twitter');
+            $table->string('instagram')->nullable();
+            $table->string('twitter')->nullable();
             $table->timestamps();
         });
     }

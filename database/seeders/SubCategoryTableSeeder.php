@@ -75,7 +75,7 @@ class SubCategoryTableSeeder extends Seeder
             ],
             [
                 'id' => 12,
-                'name' => 'DATA ENGINEER',
+                'name' => 'EXCEPTIONAL TECH PERSONALITY',
                 'category_id' => 1  
             ],
             [
@@ -155,7 +155,7 @@ class SubCategoryTableSeeder extends Seeder
             ],
             [
                 'id' => 28,
-                'name' => 'C-LEVEL',
+                'name' => 'TECH HR PERSONNEL',
                 'category_id' => 1  
             ],
             [
@@ -275,16 +275,11 @@ class SubCategoryTableSeeder extends Seeder
             ],
             [
                 'id' => 52,
-                'name' => 'EXCEPTIONAL TECH PERSONALITY',
-                'category_id' => 1  
-            ],
-            [
-                'id' => 53,
                 'name' => 'PEOPLE\’S BEST COMPANY OF THE YEAR',
                 'category_id' => 1  
             ],
             [
-                'id' => 54,
+                'id' => 53,
                 'name' => 'MOST BEAUTIFUL TECH LADY OF THE YEAR',
                 'category_id' => 1  
             ]
