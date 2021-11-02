@@ -96,6 +96,7 @@ class NomineeController extends Controller
         $nomination->gender = $request->genders;
         $nomination->instagram = $request->instagram;
         $nomination->email = $request->email;
+        $nomination->save();
 
         return response()->json([
             'status' => 'Nomination Accepted',
